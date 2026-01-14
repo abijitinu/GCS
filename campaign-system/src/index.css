@@ -1,0 +1,145 @@
+:root {
+  /* Primary Palette */
+  --color-pg-blue: #003DA5;
+  /* PMS 293 */
+  --color-heritage-blue: #00A3E0;
+  /* PMS 299 */
+  --color-white: #FFFFFF;
+  --color-yellow: #FEDB00;
+  /* PMS 108 */
+
+  /* Secondary Palette - For functional use */
+  --color-red: #EF3340;
+  /* PMS 032 */
+  --color-orange: #E87722;
+  /* PMS 158 */
+  --color-sun: #F1B434;
+  /* PMS 143 */
+  --color-green: #00B140;
+  /* PMS 354 */
+  --color-lime: #97D700;
+  /* PMS 375 */
+  --color-navy: #012169;
+  /* PMS 280 */
+  --color-fuschia: #AF1685;
+  /* PMS 241 */
+  --color-pink: #F277C6;
+  /* PMS 231 */
+  --color-black: #000000;
+
+  /* App Semantic Mapping */
+  --color-primary: var(--color-pg-blue);
+  --color-primary-light: #E6F0FF;
+  /* Very light tint of P&G Blue for hovers */
+  --color-secondary: var(--color-heritage-blue);
+
+  --color-bg-app: #F4F7FB;
+  /* Clean light gray/blue tint */
+  --color-bg-card: #FFFFFF;
+  --color-bg-header: rgba(255, 255, 255, 0.95);
+  --color-border: #E2E8F0;
+
+  --color-text-main: #000E2F;
+  /* Very dark blue instead of pure black for softer contrast */
+  --color-text-secondary: #5C6B7F;
+  --color-text-muted: #94A3B8;
+  --color-text-light: #64748B;
+
+  --color-status-active: var(--color-green);
+  --color-status-planning: var(--color-heritage-blue);
+  --color-status-review: var(--color-orange);
+  --color-status-ended: var(--color-text-muted);
+
+  /* Typography */
+  --font-family-primary: 'Montserrat', sans-serif;
+
+  /* Shadows & Radius */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 4px 6px -1px rgba(0, 61, 165, 0.05), 0 2px 4px -1px rgba(0, 61, 165, 0.03);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 61, 165, 0.1), 0 4px 6px -2px rgba(0, 61, 165, 0.05);
+
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-pill: 50px;
+  /* P&G buttons are often full pills */
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background-color: var(--color-bg-app);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(0, 163, 224, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(0, 61, 165, 0.03) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+/* Reusable Components for "The Flow" Look */
+.card-flow {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle circular overlay for Flow branding */
+.card-flow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 163, 224, 0.02) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-pill);
+  padding: 12px 28px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 61, 165, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #002D7A;
+  /* Darker shade of P&G Blue */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 61, 165, 0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
