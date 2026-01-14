@@ -65,7 +65,7 @@ const Analytics = () => {
             >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
-                        <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#1E293B', marginBottom: '8px' }}>Analytics & Reports</h1>
+                        <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#1E293B', marginBottom: '8px' }}>Analytics</h1>
                         <p style={{ color: '#64748B' }}>Deep dive into campaign performance and ROI metrics.</p>
                     </div>
 
