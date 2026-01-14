@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Doughnut, Bar } from 'react-chartjs-2';
-import { TrendingUp, Users, DollarSign, Target, ArrowUp, ArrowDown, Sparkles, Brain } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, Target, ArrowUp, ArrowDown } from 'lucide-react';
 import {
     Chart as ChartJS,
     ArcElement,
@@ -54,12 +54,7 @@ const Analytics = () => {
         { title: 'Avg. ROI', value: '340%', change: '+18.2%', isPositive: true, icon: TrendingUp },
     ];
 
-    // AI Insights - Generated
-    const aiInsights = [
-        "Revenue in **Europe** is up **12%** this month, largely driven by the **Pampers Loyalty Program** launch.",
-        "Cost per acquisition has decreased by **8%** in **North America**, suggesting simpler creative assets are performing better.",
-        "Consider reallocating **$50k** from 'Summer Promo' to 'Back to School' based on early engagement signals."
-    ];
+
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
@@ -73,43 +68,11 @@ const Analytics = () => {
                         <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#1E293B', marginBottom: '8px' }}>Analytics & Reports</h1>
                         <p style={{ color: '#64748B' }}>Deep dive into campaign performance and ROI metrics.</p>
                     </div>
-                    {/* Generative AI Feature Badge */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', borderRadius: '30px', color: 'white', fontSize: '14px', fontWeight: '600' }}>
-                        <Sparkles size={16} /> Beta AI Enabled
-                    </div>
+
                 </div>
             </motion.div>
 
-            {/* AI Insights Section */}
-            <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                style={{
-                    background: 'linear-gradient(to right, #F5F3FF, #EEF2FF)',
-                    border: '1px solid #C7D2FE',
-                    borderRadius: '16px',
-                    padding: '24px',
-                    display: 'flex',
-                    gap: '24px',
-                    alignItems: 'center'
-                }}
-            >
-                <div style={{ backgroundColor: 'white', padding: '16px', borderRadius: '50%', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
-                    <Brain size={32} color="#7C3AED" />
-                </div>
-                <div>
-                    <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#1E293B', marginBottom: '12px' }}>Smart Assistant Insights</h3>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        {aiInsights.map((insight, i) => (
-                            <div key={i} style={{ fontSize: '14px', color: '#4B5563', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#7C3AED' }} />
-                                <span dangerouslySetInnerHTML={{ __html: insight.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </motion.div>
+
 
             {/* KPI Cards */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
