@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
-import { TrendingUp, Users, DollarSign, Target, ArrowUp, ArrowDown, Activity, Calendar, Filter, ChevronDown } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, Target, ArrowUp, ArrowDown, Activity, Calendar, Filter, ChevronDown, Globe } from 'lucide-react';
 import {
     Chart as ChartJS,
     ArcElement,
