@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
-import { TrendingUp, Users, DollarSign, Target, ArrowUp, ArrowDown, Activity, Smartphone, Monitor, Globe, ShoppingCart } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, Target, ArrowUp, ArrowDown, Activity, Calendar, Filter, ChevronDown } from 'lucide-react';
 import {
     Chart as ChartJS,
     ArcElement,
@@ -29,6 +29,11 @@ ChartJS.register(
 );
 
 const Analytics = () => {
+    // --- Filter States ---
+    const [dateRange, setDateRange] = useState('Last 30 Days');
+    const [selectedRegion, setSelectedRegion] = useState('All Global');
+    const [selectedCampaignType, setSelectedCampaignType] = useState('All Campaigns');
+
     // --- Mock Data ---
 
     // 1. Existing: Impact by Region
@@ -143,6 +148,28 @@ const Analytics = () => {
         { title: 'Avg. ROI', value: '340%', change: '+18.2%', isPositive: true, icon: TrendingUp },
     ];
 
+    const FilterButton = ({ label, value, icon: Icon }) => (
+        <button style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '8px 16px',
+            backgroundColor: 'white',
+            border: '1px solid #E2E8F0',
+            borderRadius: '8px',
+            color: '#475569',
+            fontSize: '14px',
+            fontWeight: '500',
+            cursor: 'pointer',
+            transition: 'all 0.2s',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+        }}>
+            {Icon && <Icon size={16} />}
+            <span>{value}</span>
+            <ChevronDown size={14} />
+        </button>
+    );
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {/* Header */}
@@ -151,21 +178,43 @@ const Analytics = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div>
-                        <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#1E293B', marginBottom: '8px' }}>Analytics</h1>
-                        <p style={{ color: '#64748B' }}>Deep dive into campaign performance and ROI metrics.</p>
-                    </div>
-                    {/* Real-time Users Widget */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 20px', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
-                        <div style={{ position: 'relative' }}>
-                            <Activity size={24} color="#10B981" />
-                            <span style={{ position: 'absolute', top: -2, right: -2, width: '8px', height: '8px', backgroundColor: '#10B981', borderRadius: '50%', border: '2px solid white' }}></span>
-                        </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div>
-                            <div style={{ fontSize: '12px', color: '#64748B', fontWeight: '600' }}>Active Users</div>
-                            <div style={{ fontSize: '18px', fontWeight: '700', color: '#1E293B', fontVariantNumeric: 'tabular-nums' }}>{activeUsers.toLocaleString()}</div>
+                            <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#1E293B', marginBottom: '8px' }}>Analytics</h1>
+                            <p style={{ color: '#64748B' }}>Deep dive into campaign performance and ROI metrics.</p>
                         </div>
+                        {/* Real-time Users Widget */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 20px', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
+                            <div style={{ position: 'relative' }}>
+                                <Activity size={24} color="#10B981" />
+                                <span style={{ position: 'absolute', top: -2, right: -2, width: '8px', height: '8px', backgroundColor: '#10B981', borderRadius: '50%', border: '2px solid white' }}></span>
+                            </div>
+                            <div>
+                                <div style={{ fontSize: '12px', color: '#64748B', fontWeight: '600' }}>Active Users</div>
+                                <div style={{ fontSize: '18px', fontWeight: '700', color: '#1E293B', fontVariantNumeric: 'tabular-nums' }}>{activeUsers.toLocaleString()}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Filters Bar */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingBottom: '8px' }}>
+                        <FilterButton icon={Calendar} value={dateRange} label="Date Range" />
+                        <FilterButton icon={Globe} value={selectedRegion} label="Region" />
+                        <FilterButton icon={Filter} value={selectedCampaignType} label="Campaign Type" />
+                        <div style={{ flex: 1 }}></div>
+                        <button style={{
+                            padding: '8px 16px',
+                            backgroundColor: '#F1F5F9',
+                            color: '#64748B',
+                            border: 'none',
+                            borderRadius: '8px',
+                            fontSize: '14px',
+                            fontWeight: '600',
+                            cursor: 'pointer'
+                        }}>
+                            Reset Filters
+                        </button>
                     </div>
                 </div>
             </motion.div>
